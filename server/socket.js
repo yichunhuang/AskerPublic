@@ -60,58 +60,41 @@ module.exports = (io, siofu) => {
                 return;
             };
 
-            let p1 = Post.readById(postId);
-            let p2 = User.readByToken(accessToken); 
-            Promise.all([p1, p2]).then((values) => {
-                post = values[0];
-                user = values[1];
+            let getPostPromise = Post.readById(postId);
+            let getUserPromise = User.readByToken(accessToken); 
+            Promise.all([getPostPromise, getUserPromise]).then((promises) => {
+                post = promises[0];
+                user = promises[1];
                 
-                // TODO: to be refract too much repeat!
-                if ((user.role === 'student' && post.studentId === user.id) ||
-                (user.role === 'teacher' && post.status === 'Answering' && post.teacherId === user.id)) {
-                    ChatRecord.readAll({postId: post.id}).then((chatRecord) => {
-                        socket.join(post.id);
-                        socket.emit("status", 'init ok');
-                        socket.emit("userId", user.id);
-                        socket.emit("chatRecord", chatRecord); 
-                        io.to(post.id).emit("online", io.nsps['/'].adapter.rooms[post.id].length);
-                        fs.mkdir("/Users/yichun_huang/Desktop/AWS/GraphQLPractice/server/assets/socket/"+post.id, { recursive: true }, (err) => {
-                            if (err) {
-                                socket.emit('status', 'File Dir Invalid');
-                                socket.disconnect();
-                                return; 
-                            } 
-                        });
-                        uploader.dir = "/Users/yichun_huang/Desktop/AWS/GraphQLPractice/server/assets/socket/" + post.id;
-                        // let clients = io.nsps['/'].adapter.rooms[post.id];
-                        // console.log(clients.length);
-                    })
-                }
-                else if (user.role === 'teacher' && post.status === 'Unanswer') {
-                let p1 = Post.update({id: post.id, teacherId: user.id, status: 'Answering'});
-                let p2 = ChatRecord.readAll({postId: post.id});
-                Promise.all([p1, p2]).then((values) => {
-                        socket.join(post.id);
-                        socket.emit("status", 'init ok');
-                        socket.emit("userId", user.id);
-                        socket.emit("chatRecord", chatRecord); 
-                        io.to(post.id).emit("online", io.nsps['/'].adapter.rooms[post.id].length);
-                        fs.mkdir("/Users/yichun_huang/Desktop/AWS/GraphQLPractice/server/assets/socket/"+post.id, { recursive: true }, (err) => {
-                            if (err) {
-                                socket.emit('status', 'File Dir Invalid');
-                                socket.disconnect();
-                                return; 
-                            } 
-                        });
-                        uploader.dir = "/Users/yichun_huang/Desktop/AWS/GraphQLPractice/server/assets/socket/" + post.id;
-                })
-                }
-                else {
+                let isStudent = (user, post) => user.role === 'student' && post.studentId === user.id; 
+                let isAnsweringTeacher = (user, post) => user.role === 'teacher' && post.status === 'Answering' && post.teacherId === user.id; 
+                let isNewComingTeacher = (user, post) => user.role === 'teacher' && post.status === 'Unanswer'; 
+
+                if (!isStudent && !isAnsweringTeacher && !isNewComingTeacher) {
                     socket.emit('status', 'Data Invalid');
                     socket.disconnect();
                     return; 
                 }
 
+                let promiseArray = [];
+                promiseArray.push(ChatRecord.readAll({postId: post.id}));
+                if (isNewComingTeacher)
+                    promiseArray.push(Post.update({id: post.id, teacherId: user.id, status: 'Answering'}));
+                Promise.all(promiseArray).then((promises) => {
+                    socket.join(post.id);
+                    socket.emit("status", 'init ok');
+                    socket.emit("userId", user.id);
+                    socket.emit("chatRecord", chatRecord); 
+                    io.to(post.id).emit("online", io.nsps['/'].adapter.rooms[post.id].length);
+                    fs.mkdir("/Users/yichun_huang/Desktop/AWS/GraphQLPractice/server/assets/socket/"+post.id, { recursive: true }, (err) => {
+                        if (err) {
+                            socket.emit('status', 'File Dir Invalid');
+                            socket.disconnect();
+                            return; 
+                        } 
+                    });
+                    uploader.dir = "/Users/yichun_huang/Desktop/AWS/GraphQLPractice/server/assets/socket/" + post.id;
+                })
             }); 
         });
 
@@ -120,7 +103,6 @@ module.exports = (io, siofu) => {
             msg.postId = post.id;
             msg.senderId = user.id;
             msg.createdAt = Date.now();
-            console.log(msg);
             client.hset(post.id, JSON.stringify(msg), "value");
             io.to(post.id).emit("msg", msg);
         });
@@ -141,7 +123,6 @@ module.exports = (io, siofu) => {
             client.hkeys(post.id, function (err, values) {
                 if (!values.length)
                     return;
-                
                 for (let i = 0; i < values.length; i++)
                     values[i] = (JSON.parse(values[i]));
                 values.sort((a, b) => a.createdAt - b.createdAt);

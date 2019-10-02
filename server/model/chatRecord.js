@@ -12,7 +12,7 @@ module.exports={
                 let record = await ChatRecord.forge(recordData[i]).save();
                 recordArr[i] = record.toJSON();
                 count++;
-                if (count=== recordData.length) {
+                if (count === recordData.length) {
                     return recordArr; 
                 }
             }
