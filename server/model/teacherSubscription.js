@@ -1,11 +1,5 @@
 const bookshelf = require('../lib/bookshelf.js');
-const User = bookshelf.Model.extend({
-    tableName: 'user'
-});
-const TeacherSubscription = bookshelf.Model.extend({
-    tableName: 'teacherSubscription'
-});
-
+const {User, TeacherSubscription} = require('../lib/schema.js');
 
 module.exports={
     // Update Subscription

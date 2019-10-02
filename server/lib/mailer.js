@@ -1,7 +1,7 @@
-let nodemailer = require('nodemailer');
 require('dotenv').config();
+const nodemailer = require('nodemailer');
 
-let transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env["EMAIL_USER"],
@@ -9,7 +9,7 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-let options = {
+const options = {
     from: process.env["EMAIL_USER"],
 	  subject: 'Asker 購買訂單',
     text: '恭喜訂單付款成功!',

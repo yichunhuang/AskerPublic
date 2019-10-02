@@ -1,8 +1,6 @@
 const bookshelf = require('../lib/bookshelf.js');
 const client = require("../lib/redis.js");
-const Subject = bookshelf.Model.extend({
-    tableName: 'subject'
-});
+const {Subject} = require('../lib/schema.js');
 
 module.exports={
     // // Read By Id

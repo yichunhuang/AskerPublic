@@ -1,11 +1,8 @@
-const bookshelf = require('../lib/bookshelf.js');
 const crypto=require('crypto');
 const client = require("../lib/redis.js");
 const request = require('request');
-const User = bookshelf.Model.extend({
-    tableName: 'user'
-});
-
+const {User} = require('../lib/schema.js');
+const bookshelf = require('../lib/bookshelf.js');
 module.exports={
     // Sign up
     new: (userData) => {

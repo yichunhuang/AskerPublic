@@ -1,8 +1,6 @@
-const base64Img = require('base64-img');
 const bookshelf = require('../lib/bookshelf.js');
-const ChatRecord = bookshelf.Model.extend({
-    tableName: 'chatRecord'
-});
+const base64Img = require('base64-img');
+const {ChatRecord} = require('../lib/schema.js');
 
 module.exports={
     // Add ChatRecord

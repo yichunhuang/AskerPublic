@@ -1,32 +1,8 @@
-// const bookshelf = require('../lib/bookshelf.js');
-const base64Img = require('base64-img');
 const bookshelf = require('../lib/bookshelf.js');
+const base64Img = require('base64-img');
 const client = require("../lib/redis.js");
 let s3 = require("../lib/s3.js");
-const ChatRecord = bookshelf.Model.extend({
-    tableName: 'chatRecord'
-}); 
-const User = bookshelf.Model.extend({
-    tableName: 'user'
-});
-const Subject = bookshelf.Model.extend({
-    tableName: 'subject'
-});
-const Post = bookshelf.Model.extend({
-    tableName: 'post',
-    chatRecords: function() {
-        return this.hasMany(ChatRecord, 'postId');
-    },
-    student: function() {
-        return this.belongsTo(User, 'studentId');
-    }, 
-    teacher: function() {
-        return this.belongsTo(User, 'teacherId');
-    },
-    subject: function() {
-        return this.belongsTo(Subject, 'subjectId');
-    }
-});
+const {ChatRecord, User, Subject, Post} = require('../lib/schema.js');
 
 module.exports={
     // Add Post

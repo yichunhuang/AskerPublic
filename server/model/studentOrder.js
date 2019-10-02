@@ -1,15 +1,7 @@
-const bookshelf = require('../lib/bookshelf.js');;
+const bookshelf = require('../lib/bookshelf.js');
 const mailer = require('../lib/mailer.js');
 const client = require("../lib/redis.js");
-const User = bookshelf.Model.extend({
-    tableName: 'user'
-});
-const StudentOrder = bookshelf.Model.extend({
-    tableName: 'studentOrder',
-    student: function() {
-        return this.belongsTo(User, 'studentId');
-    }
-});
+const {User, StudentOrder} = require('../lib/schema.js');
 
 
 module.exports={
