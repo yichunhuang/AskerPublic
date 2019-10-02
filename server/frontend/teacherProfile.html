@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="education website. updated at 201903281012." />
+<title>Asker</title>
+<link rel="stylesheet" type="text/css" href="css/header.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/teacherProfile.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/notification.css" media="all" />
+<script src="js/graphql.js"></script>
+<script src="js/graphqlConfig.js"></script>
+<script src="js/teacherVerification.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/teacherProfile.js"></script>
+<script src="notification.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="set">
+            <a href='answer.html' >
+                <div class="navDiv withWords chat">
+                    <img src="/imgs/chat.png" class="navImg">
+                    <div class="navliveChat"> Live Chat</div>
+                </div>
+            </a>
+            <a href='teacherHistory.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/history.png" class="navImg">  
+                    <div class="navhistory"> History</div>
+                </div>
+            </a>
+        </div>
+        <div id="logo"> 
+            Asker
+        </div>
+        <div class="set">
+            <a href='teacherOrder.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/order.png" class="navImg"> 
+                    <div class="navorder"> Order</div>
+                </div>
+            </a>
+            <a href='teacherProfile.html'>
+                <div class="navDiv withWords">
+                <img src="/imgs/profile.png" class="navImg"> 
+                <div class="navorder"> Profile</div>
+                </div>
+            </a>
+        </div>
+    </header>
+	<main>
+        <div id="updateMsg">
+            <div id="msg">Subscription Updated Now!</div>
+            <div class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</div>
+        </div>
+        <div class="sky">
+            <div class="buttons">
+                <div class="proButton" onclick="app.showProfile()">Profile</div>
+                <div class="subButton" onclick="app.showSubscription()">Subscription</div>
+            </div>
+            <div class="card">
+                <img src="/imgs/bigprofile.png" class="image"></img>
+                <div class="naiyo">
+                        
+                    <div id="profiles" class="profiles">
+                    </div>
+                    <div id="subscription" class="subscription">
+
+                        <div class="twoForm">
+                        <form id="form" action="javascript:sw()">
+                            <!-- <div class="form"> 
+                                <div class="box">
+                                <div>Math</div>
+                                <label class="switchy">
+                                    <input type="checkbox" name="subject" value="1">
+                                    <span class="slider round"></span>
+                                </label>
+                                </div>
+                                <div class="box">
+                                <div>English</div>
+                                <label class="switchy">
+                                    <input type="checkbox" name="subject" value="2">
+                                    <span class="slider round"></span>
+                                </label>
+                                </div>
+                            </div>
+                            <div class="form"> 
+                                <div class="box">
+                                <div>Science</div>
+                                <label class="switchy">
+                                    <input type="checkbox" name="subject" value="3">
+                                    <span class="slider round"></span>
+                                </label>
+                                </div>
+                                <div class="box">
+                                    <div>Geography</div>
+                                    <label class="switchy">
+                                        <input type="checkbox" name="subject" value="4">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div> -->
+                            <!-- <input type="submit" class="submit" value="SAVE">  -->
+                        </form>
+                        </div>
+                    </div>
+                    <div id="logout" class="logout" onclick="app.signOut()">Log Out</div>
+                </div>
+            </div> 
+        </div>
+    </main>
+	<footer>
+        Copyright © YiChun Huang. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="education website. updated at 201903281012." />
+<title>Asker</title>
+<link rel="stylesheet" type="text/css" href="css/studentHeader.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/studentHistory.css" media="all" />
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="js/graphql.js"></script>
+<script src="js/graphqlConfig.js"></script>
+<script src="js/studentVerification.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+        crossorigin="anonymous">
+</script> 
+<script src="js/lib.js"></script>
+<script src="js/studentHistory.js"></script>
+</head>
+<body>
+    <header>
+        <div class="set">
+            <a href='ask.html' >
+                <div class="navDiv withWords chat">
+                    <img src="/imgs/chat.png" class="navImg">
+                    <div class="navliveChat"> Live Chat</div>
+                </div>
+            </a>
+            <a href='studentHistory.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/history.png" class="navImg">  
+                    <div class="navhistory"> History</div>
+                </div>
+            </a>
+            
+        </div>
+        <div id="logo"> 
+            Asker
+        </div>
+        <div class="set">
+            <a href='payment.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/credit-card.png" class="navImg"> 
+                    <div class="navpayment"> Payment</div>
+                </div>
+            </a>
+            <a href='studentOrder.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/order.png" class="navImg"> 
+                    <div class="navorder"> Order</div>
+                </div>
+            </a>
+            <a href='studentProfile.html'>
+                <div class="navDiv">
+                <img src="/imgs/profile.png" class="navImg"> 
+                </div>
+            </a>
+        </div>
+    </header>
+    <main>
+
+            <div id="carousel">
+        
+            <!-- <div class="hideLeft">
+                <div class="card"></div>
+            </div>
+            <div class="hideLeft">
+                <div class="card"></div>
+            </div>
+    
+            <div class="prevLeftSecond">
+                <div class="card"></div>
+            </div>
+    
+            <div class="prev">
+                <div class="card">
+                    <div class="card">
+                            <div class="naiyo">
+                                    <h7 class="top">
+                                        <h7 class="subject"> Math</h7>
+                                        <h1 class="title">微積分體積</h1> 
+                                        <p class="student">發問學生: Jade</p>
+                                    </h7>
+                                    <h7 class="time">Wed August 29</h7>
+                                    <h7 class="content"> 原本待在家頭昏腦脹的我，突然被回家的老媽挖起來質問我是不是網購了一大堆東西。
+                                            我完全摸不著頭緒，奇怪，這個月我買了什麼？
+                                            手機殼？到貨了啊
+                                            椅子？送來了啊
+                                            難道是化妝品？可是這個月沒喝醉不會失手全買了啊？</h7>
+                                    
+                                </div>
+                    </div>
+                </div>
+            </div> -->
+    
+            <!-- <div class="selected">
+                <div class="card">
+                    <div class="naiyo">
+                        <h7 class="top">
+                            <h7 class="subject"> Math</h7>
+                            <h1 class="title">微積分體積</h1> 
+                            <p class="student">發問學生: Jade</p>
+                        </h7>
+                        <h7 class="time">Wed August 29</h7>
+                        <h7 class="content"> 原本待在家頭昏腦脹的我，突然被回家的老媽挖起來質問我是不是網購了一大堆東西。
+                                我完全摸不著頭緒，奇怪，這個月我買了什麼？
+                                手機殼？到貨了啊
+                                椅子？送來了啊
+                                難道是化妝品？可是這個月沒喝醉不會失手全買了啊？</h7>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <div class="next">
+                <div class="card"></div>
+            </div>
+    
+            <div class="nextRightSecond">
+                <div class="card"></div>
+            </div>
+    
+            <div class="hideRight">
+                <div class="card"></div>
+            </div>
+            <div class="hideRight">
+                <ediv class="card"></ediv>
+            </div> -->
+    
+            </div>
+            
+            <div id="history">
+                <div id="box">
+                    <!-- <div class="me"> hi</div>
+                    <div class="other">hello</div> -->
+                </div>
+                <div id="close" onclick="app.close()">X</div>
+    
+            </div>
+        </main>
+        <div class="goToLeft" onclick="moveToSelected('prev')"> <i class="fas fa-caret-left fa-3x"></i></div>
+        <div class="goToRight" onclick="moveToSelected('next')"> <i class="fas fa-caret-right fa-3x"></i></div>
+        <div class="search-box">
+            <input type="text" name="" class="search-txt" id="search-txt" placeholder="Type to search"/>
+            <div class="search-btn" onclick="app.allPosts()">
+            <i class="fas fa-search"></i>
+            </div>
+        </div>
+	
+</body>
+<footer>
+        Copyright © YiChun Huang. All rights reserved.
+</footer>
+</html>

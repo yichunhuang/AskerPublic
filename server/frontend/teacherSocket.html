@@ -1,0 +1,145 @@
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asker</title>
+    <link rel="stylesheet" type="text/css" href="css/header.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/teacherSocket.css" media="all" />
+    <!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+        crossorigin="anonymous"> </script> -->
+    <!-- <script src="js/jQuery.js"></script> -->
+    <script src="js/graphql.js"></script>
+    <script src="js/graphqlConfig.js"></script>
+    <script src="js/teacherVerification.js"></script>
+    <script src="js/lib.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/siofu/client.js"></script>
+    <script>
+        // let accessToken = localStorage.getItem('accessToken');
+        let url = window.location.href;
+        url = new URL(url);
+        let postId = url.searchParams.get("postId");
+        // let socket = io('asker.mu.yichunhuang.com:80', {
+        //     transports: ['websocket'], 
+        //     query: {
+        //         token:  accessToken,
+        //         postId: postId
+        //     }
+        // });
+        let socket = io('127.0.0.1:3000', {
+            transports: ['websocket'], 
+            query: {
+                token:  accessToken,
+                postId: postId
+            }
+        });
+    </script>
+</head>
+<body> 
+    <header>
+        <div class="set">
+            <a href='answer.html' >
+                <div class="navDiv withWords chat">
+                    <img src="/imgs/chat.png" class="navImg">
+                    <div class="navliveChat"> Live Chat</div>
+                </div>
+            </a>
+            <a href='teacherHistory.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/history.png" class="navImg">  
+                    <div class="navhistory"> History</div>
+                </div>
+            </a>
+        </div>
+        <div id="logo"> 
+            Asker
+        </div>
+        <div class="set">
+            <a href='teacherOrder.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/order.png" class="navImg"> 
+                    <div class="navorder"> Order</div>
+                </div>
+            </a>
+            <a href='teacherProfile.html'>
+                <div class="navDiv withWords">
+                <img src="/imgs/profile.png" class="navImg"> 
+                <div class="navorder"> Profile</div>
+                </div>
+            </a>
+        </div>
+    </header>
+    <main id="main">
+        <div class="leftTop" id="leftTop">
+            <img src="/imgs/livechat.png" class="livechat" width="40px" height="40px">
+            <div class="chatBox">
+                Chat Box
+            </div>
+        </div>
+        <div class="onlineStatus" id="onlineStatus">
+            <div class="offlineIcon" id="icon"></div>
+            <div class="offlineText" id="text">Offline</div>
+        </div>
+        <div class="rightTop" id='rightTop'>
+            <img src="/imgs/whiteboard.png" class="whiteboard" width="30px" height="35px">
+            <div class="board">
+                Live Board
+            </div>
+        </div>
+        <div class="leave" id="leave" onclick="teacherLeave()"></div> 
+        <!-- <div class="leave" id="leave" onclick="leave()"></div>  -->
+        <div class="left" id="left">
+            <div id="container">
+                <!-- <div id="status-box">Server: <span id="status">-</span></div> -->
+                <div id="content">
+                    
+                </div>
+                <div id="sendBox">
+                    <form id="sendForm">
+                        <input type="text" name="msg" id="msg" placeholder="Type a message ...">
+                        <input type="file" id="siofu_input" style="display: none;" class="custom-file-input" accept="image/*" />
+                        <input type="submit" value="Send">
+                    </form>
+                    <button id="button" onclick="document.getElementById('siofu_input').click();">
+                        <img src="/imgs/loading.gif" id="loading1" width="50" height="50">
+                        <img id="cloud" src='./imgs/uploadcloud.png' width="30" height="30">
+                        <div>Upload A File</div>
+                        <img src="/imgs/loading.gif" id="loading2" width="50" height="50">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="right" id="right">
+            <div class="toolbar">
+            <span class="active color" data-color="#000000" data-width="2"></span>
+            <span class="color" data-color="#ffdd00" data-width="2"></span>
+            <span class="color" data-color="#888888" data-width="2"></span>
+            <span class="color" data-color="#D00000" data-width="2"></span>
+            <span class="color" data-color="#ffffff" data-width="50"></span>
+            <span class="button reset">reset</span>
+            <span class="button save">save image</span>
+            </div>
+        
+            <div id="whiteboard"></div>
+        </div>
+        
+    </main>
+    <div id="history">
+        <div id="box">
+            <!-- <div class="me"> hi</div>
+            <div class="other">hello</div> -->
+        </div>
+        <div id="close" onclick="app.close()">X</div>
+    </div>
+    <footer>
+        Copyright © YiChun Huang. All rights reserved.
+    </footer>
+</body>
+<script src="js/socket.js"></script>
+<script src="js/whiteboard.js"></script>
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="js/whiteboard.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</html>

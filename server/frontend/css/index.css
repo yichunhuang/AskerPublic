@@ -1,0 +1,223 @@
+html,body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Futura;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+section {
+    width: 100%;
+    height: 60%;
+    color: #fff;
+    /* background: linear-gradient(-45deg, #EE7752, #e73c7E, #23A6D5, #23D5AB); */
+    background: linear-gradient(-45deg, #9E212E,#CE3142, #3D2563,#1C0C3D );
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 25s ease-in-out infinite;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 30px;
+    /* padding-bottom: 40px; */
+}
+@keyframes change {
+    0% {
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+.logo {
+    font-size: 2.3em;
+    font-weight: bold;
+}
+main {
+    display: flex;
+    justify-content: space-between;
+}
+.left {
+    width: 30%;
+    margin-top: 100px;
+    margin-left: 10%;
+}
+.title {
+    font-size: 2.8em;
+    font-weight: bold;
+}
+.naiyo {
+    margin-top: 15px;
+    font-size: 1.3em;
+}
+.getStart {
+    margin-top: 90px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.3em;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    text-align: center;
+}
+.getStart:hover {
+    background-color:white;
+    color: black;
+    cursor: pointer;
+}
+.right {
+    margin-right: 15%;
+}
+
+.Part1 {
+
+    border-bottom: 1px solid #c0c0af;
+    margin-top: 100px;
+    /* background-color: #f0f0f0; */
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.title1 {
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-top: 8%;
+    margin-bottom: 5px;
+}
+.student {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
+.teacher {
+    display: flex;
+    justify-content: space-around; 
+    margin-bottom: 5%;
+}
+.studentStep {
+    /* border: 1px solid #3D2563;  */
+    width: 24%;
+}
+.teacherStep {
+    width: 24%;
+}
+.stepName {
+    font-size: 2.3vw;
+    /* border-bottom: 4px solid #3D2563; */
+    /* margin-right: 20%; */
+    padding-left: 10%;
+    /* font-weight: bold; */
+    /* text-align: center; */
+    position: relative;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+.stepName:after {
+    content:""; 
+    background: black; 
+    position: absolute; 
+    bottom: 25%; 
+    left: 0; 
+    height: 50%; 
+    width: 6px;
+}
+
+.stepNameT {
+    font-size: 2.3vw;
+    /* border-bottom: 4px solid #3D2563; */
+    /* margin-right: 20%; */
+    padding-left: 10%;
+    /* font-weight: bold; */
+    /* text-align: center; */
+    position: relative;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+.stepNameT:after {
+    content:""; 
+    background: #9E212E; 
+    position: absolute; 
+    bottom: 25%; 
+    left: 0; 
+    height: 50%; 
+    width: 6px;
+}
+
+.stepNaiyo {
+    font-size: 1.3em;
+}
+
+
+.Part2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    padding-bottom: 5%;
+    border-bottom: 1px solid #c0c0af;
+}
+.left2 {
+    width: 30%;
+    margin-left: 10%; 
+}
+.right2 {
+    margin-right: 20%;
+    width: 30%;
+    margin-top: 2%;
+}
+.title2 {
+    font-size: 3.2em;
+}
+.naiyo2 {
+    margin-top: 10%;
+    font-size: 1.3em;
+}
+.explore2 {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    text-align: center;  
+    width: 25%;
+    color: white;  
+    background: linear-gradient(-45deg, #CE3142, #3D2563);
+    /* background: radial-gradient(#CE3142, #3D2563); */
+    margin-top: 90px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.2em;
+}
+
+footer {
+    width: 100%;
+    height: 8%;
+    color: #fff;
+    /* background: linear-gradient(-45deg, #EE7752, #e73c7E, #23A6D5, #23D5AB); */
+    background: linear-gradient(-45deg, #9E212E,#CE3142, #3D2563,#1C0C3D );
+    background-size: 400% 400%;
+    position: relative;
+    animation: changeFooter 30s ease-in-out infinite;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    /* padding-bottom: 40px; */
+}
+@keyframes changeFooter {
+    0% {
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="education website. updated at 201903281012." />
+<title>Asker</title>
+<link rel="stylesheet" type="text/css" href="css/studentHeader.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/ask.css" media="all" />
+<!-- <link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css"> -->
+<script src="js/graphql.js"></script>
+<script src="js/graphqlConfig.js"></script>
+<script src="js/studentVerification.js"></script>
+<script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
+
+<script src="js/lib.js"></script>
+
+<script src="js/ask.js"></script>
+</head>
+<body>
+    <header>
+        <div class="set">
+            <a href='ask.html' >
+                <div class="navDiv withWords chat">
+                    <img src="/imgs/chat.png" class="navImg">
+                    <div class="navliveChat"> Live Chat</div>
+                </div>
+            </a>
+            <a href='studentHistory.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/history.png" class="navImg">  
+                    <div class="navhistory"> History</div>
+                </div>
+            </a>
+            
+        </div>
+        <div id="logo"> 
+            Asker
+        </div>
+        <div class="set">
+            <a href='payment.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/credit-card.png" class="navImg"> 
+                    <div class="navpayment"> Payment</div>
+                </div>
+            </a>
+            <a href='studentOrder.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/order.png" class="navImg"> 
+                    <div class="navorder"> Order</div>
+                </div>
+            </a>
+            <a href='studentProfile.html'>
+                <div class="navDiv">
+                <img src="/imgs/profile.png" class="navImg"> 
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <div id="errorMsg">
+        <div id="msg"></div>
+        <div class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</div>
+    </div>
+	<main>
+        <div class="left"> 
+            <div class="content">
+                <form action="javascript:app.newPost()"> 
+                    <div class="title">
+                        Title <input class="askInfo" id="title" type="text">
+                    </div>
+                    <div class="subject">
+                    Subject
+                    <select name="subject" id="subject">
+                        <!-- <option value="1">Math</option>
+                        <option value="2">English</option>
+                        <option value="3">Science</option> -->
+                    </select>
+                    </div>
+                    <div class="details">
+                        Details 
+                        <textarea class="askInfo" id="details" placeholder="the problem you face ..."></textarea>
+                    </div>
+                    <div style="display: none"><input id="submit" type="submit" value="Ask Now"/></div>
+                </form>
+            </div>
+            <!-- <div class="dot"> -->
+                <!-- <input type="file" id="files" name="files" multiple/> -->
+               
+            <!-- </div> -->
+        </div>
+        <div class="right">
+            <div class="custom-file-container" data-upload-id="myUniqueUploadId">
+                <label><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                <label class="custom-file-container__custom-file" >
+                    <input type="file" id="files" class="custom-file-container__custom-file__custom-file-input" accept="image/*" multiple aria-label="Choose File">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                </label>
+                <div class="custom-file-container__image-preview"></div>
+            </div>
+            <script>
+                var upload = new FileUploadWithPreview('myUniqueUploadId')
+            </script>
+            
+        </div>
+    </main>
+    <button id="button" class="submitClass" onclick="document.getElementById('submit').click();">
+            <div>Ask Now</div>
+    </button>
+	
+</body>
+<footer>
+            Copyright © YiChun Huang. All rights reserved.
+	</footer>
+</html>

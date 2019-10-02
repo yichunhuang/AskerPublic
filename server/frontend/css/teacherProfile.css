@@ -1,0 +1,158 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    /* background: #0C324E; */
+    width: 100%; 
+    height: 100%;
+    /* background-color: #283E4A; */
+    font-family: Futura; 
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F9FAFA;
+}
+
+.card {
+    height: 100%;
+    background-color: white;
+    display: flex;
+    border-radius: 5px;
+    /* box-shadow: 3px 3px 20px 10px #E9E9E9; */
+    justify-content: center;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    margin-right: 5%;
+    margin-top: 20%;
+}
+
+.naiyo {
+    font-size: 0.7em;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-top: 15%;
+    width: 40%;
+    color: #434343;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+    margin-top: 5%;
+}
+
+.proButton {
+    color: #CE3142;
+    border-bottom: 2px solid #CE3142;
+    border-radius: 5px;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 50%;
+    text-align: center;
+    background-color: white;
+}
+.proButton:hover {
+    background-color: #CE3142;
+    color:white;
+    cursor: pointer;
+}
+.subButton {
+    color: #CE3142;
+    border-bottom: 2px solid #CE3142;
+    border-radius: 5px;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px; 
+    width: 50%;
+    text-align: center;
+    background-color: white;
+}
+.subButton:hover {
+    background-color: #CE3142;
+    color:white; 
+    cursor: pointer;
+}
+
+.profiles {
+    align-self: center;
+    font-size: 2em;
+    /* display: none; */
+}
+.profile {
+    margin-top: 5px;
+}
+.logout {
+    font-size: 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 50px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    /* display: none; */
+    
+    border-radius: 40px;
+    font-size: 1.2em;
+    text-align: center;
+    cursor: pointer;
+    /* width: 40%; */
+}
+.logout:hover {
+    background-color: black;
+    color:white; 
+    cursor: pointer; 
+    
+}
+
+.sky {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+/* #subscription {
+    display: none;
+} */
+
+
+
+/* The alert message box */
+#updateMsg{
+    padding: 20px;
+    background-color: #5EBC6C; /* Red */
+    color: white;
+    visibility: hidden;
+    font-size: 22px;
+    /* transition: 0.3s; */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    /* line-height: 20px; */
+    cursor: pointer;
+    /* transition: 0.3s; */
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }

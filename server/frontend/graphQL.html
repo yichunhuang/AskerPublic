@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Vanilla GraphQL</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <input type="file" id="files" name="files" multiple/>
+    <br/>
+
+    
+
+    <script src="js/graphql.js"></script>
+    <script>
+
+    var graph = graphql("http://localhost:3000/graphql", {
+        alwaysAutodeclare: true,
+        asJSON: true,
+        debug: true
+    })
+
+    // async function fetch() {
+    //     var temp = await graph.query(`
+    //         post(id: 2) {
+    //             student{
+    //                 name
+    //             }
+    //         }
+    //     `)();
+    // }
+  ;
+    function addPost(fileArr) {
+        graph.mutate(`
+            addPost(title: "title test", subjectId: 1, content: "content test", images: [${fileArr}], studentId: 34) {
+                title
+            }
+        `)();
+    }
+
+
+    </script>
+    <script>
+            // Check for the File API support.
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+            document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            } else {
+            alert('The File APIs are not fully supported in this browser.');
+            }
+    
+            function handleFileSelect(evt) {
+                function f() {
+                    let count = 0;
+                    let fileArr = [];
+                    for (let i = 0; i < evt.target.files.length; i++){ 
+                        var f = evt.target.files[i]; // FileList object
+                        var reader = new FileReader();
+                        // Closure to capture the file information.
+                        reader.onload = (function(theFile) {
+                            return function(e) {
+                            
+                            var binaryData = e.target.result;
+                            //Converting Binary Data to base 64
+                            var base64String = window.btoa(binaryData);
+
+                            fileArr[i] = '\"' + base64String + '\"';
+                            count ++;
+                            if (count == evt.target.files.length)
+                                addPost(fileArr);
+                            };
+                        })(f);
+                        // Read in the image file as a data URL.
+                        reader.readAsBinaryString(f);
+                    }
+                }
+                f();
+            }
+    </script>
+    
+</body>
+</html>

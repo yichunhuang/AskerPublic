@@ -1,0 +1,168 @@
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background: #FCF3F3; 
+    width: 1200px;
+    font-family: Futura; 
+}
+
+header {
+    display: grid;
+    width: 1200px;
+    grid-template-columns: 200px 200px 200px 200px 200px 200px;
+    grid-template-rows: 50px 100px 50px;
+    /* background: white; */
+}
+
+#logo {
+  font-size:75px;
+  padding-top: 20px;
+  padding-left: 50px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  background-size: 450px 200px;
+  background-repeat: no-repeat;
+  background-image: url("../imgs/logo.png");
+}
+
+main {
+    width: 1200px;
+    display: grid;
+    grid-template-columns: 25px 550px 600px 25px;
+    grid-template-rows: 50px 100px 1000px; 
+    background: #FCF3F3; 
+}
+#submain {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    background-size: 500px 300px;
+    background-image: url("../imgs/triangle.png"); 
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+#subtitle {
+    font-size: 2.7em;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.subcontent {
+    font-size: 1.2em;
+    color: #666666;
+}
+.signCategory {
+    margin-top: 50px; 
+    margin-left: 80px;
+}
+#signIn {
+    background-color: #F18068; /* Green */
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+#signUp {
+    background-color: white; /* Green */
+    /* border: 3px solid #F18068; */
+    box-shadow: inset 0px 0px 0px 3px #F18068;
+    color: #F18068;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
+#signPage {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 4; 
+}
+
+#outBorder {
+    width: 500px;
+    height: 600px;
+    border-radius: 0 30px 0 30px;
+    background: #FBDD96;
+    padding: 30px;
+}
+
+#inBorder {
+    border: 2px solid white;
+    /* height: 575px; */
+    height: 100%;
+    box-shadow: inset 0px 0px 0px 3px white;
+    border-radius: 0 30px 0 30px;
+    background: #FBDD96;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: auto;
+}
+
+.info {
+    font-size: 1.3em;
+    color: #666666;
+    font-weight: bold;
+    border-bottom: 3px solid #666666;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+.inputInfo:focus{
+    outline: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+   -webkit-box-shadow: 0 0 0 30px #FBDD96 inset !important;
+   box-shadow: 0 0 0 30px #FBDD96 inset !important;
+}
+.inputInfo {
+    background: #FBDD96;
+    border: none;
+}
+#email {
+    margin-top: 80px;
+}
+
+.submitClass {
+    margin-top: 30px;
+    text-align: center; 
+}
+#submit {
+    background-color: #F18068; /* Green */
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 90px;
+  }
+
+  #fbSubmit {
+    background-color:#4468B3; /* Green */
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }

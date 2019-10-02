@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="education website. updated at 201903281012." />
+<title>Asker</title>
+<link rel="stylesheet" type="text/css" href="css/signUp2.css" media="all" />
+<script src="js/graphql.js"></script>
+<script src="js/graphqlConfig.js"></script>
+<script src="js/signVerification.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/signUp.js"></script>
+</head>
+<body>
+	<main>
+        <div id="bg"></div>
+        <div class="page-container">
+            <div class="login-container">
+                <div class="form-header">
+                    <div class="switch">
+                        <a href='signIn.html' class="signin-txt">
+                            Sign In
+                        </a>
+                        <div class="signup-txt">
+                            Sign Up
+                        </div> 
+                    </div> 
+                    <div class="dark-side">
+    
+                    </div>  
+                </div>
+                    <div id="errorMsg">
+                        <div id="msg"></div>
+                        <div class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</div>
+                    </div>
+                    <form action="javascript:app.signUp()">
+                    <div class="form-body">
+                        <input type="text" id="inputUser" placeholder="Username">
+                        <input type="text" id="inputEmail" placeholder="Email">
+                        <input type="password" id="inputPassword" placeholder="Password">
+                        <div class="identity">
+                            <input type="radio" name="role" class="identityButton" value="teacher" checked> Teacher
+                            <input type="radio" name="role" class="identityButton" value="student"> Student
+                        </div>
+                        <input type="submit" value="Sign up">
+                    </div>
+                    </form>
+            </div>
+        </div> 
+    </main>
+	<footer>
+		
+	</footer>
+</body>
+</html>

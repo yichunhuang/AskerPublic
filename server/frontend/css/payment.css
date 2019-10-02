@@ -1,0 +1,119 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+    width: 100%;
+}
+
+.payment {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 4; 
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px;
+    background-color: white;
+    font-family: Time New Roman, Times New;
+    color: grey;
+}
+.StripeElement {
+    box-sizing: border-box;
+
+    height: 40px;
+
+    padding: 10px 12px;
+
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+  
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+.email {
+    box-sizing: border-box;
+    margin-left: 5%;
+    /* height: 40px; */
+    color: white;
+
+
+
+    /* box-shadow: 0 1px 3px 0 #e6ebf1; */
+    /* -webkit-transition: box-shadow 150ms ease; */
+    /* transition: box-shadow 150ms ease;  */
+    /* margin-bottom: 15px; */
+    /* opacity: 0.5; */
+    background: hsla(0,0%,100%,.15);
+}
+.point {
+    background: hsla(0,0%,100%,.15);
+    box-sizing: border-box;
+    margin-left: 5%;
+    /* height: 40px; */
+    color: white;
+
+
+    /* box-shadow: 0 1px 3px 0 #e6ebf1; */
+    /* -webkit-transition: box-shadow 150ms ease; */
+    /* transition: box-shadow 150ms ease;  */
+    /* margin-bottom: 15px; */
+    background: hsla(0,0%,100%,.15);
+}
+
+.submit {
+    background-color: #FBDD96; /* Green */
+    border: none;
+    color: white;
+    font-size: 0.9em;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* The alert message box */
+#errorMsg{
+    padding: 15px;
+    background-color: #F5A94E; /* Red */
+    color: white;
+    visibility: hidden;
+    font-size: 22px;
+    /* transition: 0.3s; */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    /* line-height: 20px; */
+    cursor: pointer;
+    /* transition: 0.3s; */
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }

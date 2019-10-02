@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="education website. updated at 201903281012." />
+<title>Asker</title>
+<link rel="stylesheet" type="text/css" href="css/signIn2.css" media="all" />
+<script src="js/graphql.js"></script>
+<script src="js/graphqlConfig.js"></script>
+<script src="js/signVerification.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/signIn.js"></script>
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2088123174829137&autoLogAppEvents=1"></script>
+	<main>
+        <div id="bg"></div>
+        <div class="page-container">
+            <for class="login-container">
+                <div class="form-header">
+                    <div class="switch">
+                        <div class="signin-txt">
+                            Sign In
+                        </div> 
+                        <a href='signUp.html' class="signup-txt">
+                                Sign Up
+                        </a>
+                    </div> 
+                    <div class="dark-side">
+    
+                    </div>  
+                </div>
+                <div id="errorMsg">
+                    <div id="msg"></div>
+                    <div class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</div>
+                </div>
+                <form action="javascript:app.signIn()">
+                    <div class="form-body">
+                        <input type="text" name="username" id="inputEmail" placeholder="Email">
+                        <input type="password" name="password" id="inputPassword" placeholder="Password">
+                        <!-- <a class="forg-pwd">Forgot your password?</a> -->
+                        <input type="submit" value="Sign in">
+                        <div class="facebook">
+                            <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                        </div>
+                        <div class="fbMsg">Facebook Log In is only for Student.</div>
+                        <div class="fbMsg">Teacher use Native Sign In, please.</div>
+                    </div>
+                </form>
+        </div>
+    </main>
+	<footer>
+		
+	</footer>
+</body>
+</html>

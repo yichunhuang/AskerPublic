@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="education website. updated at 201903281012." />
+<title>Asker</title>
+<link rel="stylesheet" type="text/css" href="css/header.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/answer.css" media="all" />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<script src="js/graphql.js"></script>
+<script src="js/graphqlConfig.js"></script>
+<script src="js/teacherVerification.js"></script>
+<script src="js/lib.js"></script>
+
+
+</head>
+<body>
+    <header>
+        <div class="set">
+            <a href='answer.html' >
+                <div class="navDiv withWords chat">
+                    <img src="/imgs/chat.png" class="navImg">
+                    <div class="navliveChat"> Live Chat</div>
+                </div>
+            </a>
+            <a href='teacherHistory.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/history.png" class="navImg">  
+                    <div class="navhistory"> History</div>
+                </div>
+            </a>
+        </div>
+        <div id="logo"> 
+            Asker
+        </div>
+        <div class="set">
+            <a href='teacherOrder.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/order.png" class="navImg"> 
+                    <div class="navorder"> Order</div>
+                </div>
+            </a>
+            <a href='teacherProfile.html'>
+                <div class="navDiv withWords">
+                <img src="/imgs/profile.png" class="navImg"> 
+                <div class="navorder"> Profile</div>
+                </div>
+            </a>
+        </div>
+    </header>
+	<main>
+        <div class="left"> 
+            <div class="cardBox" id="cardBox">
+                    <div class="filter">
+                        <div id="select7" class="select7_container">
+                            <div class="select7_arrow">&#9662;</div>
+                            <div class="select7_placeholder">Select Subjects</div>
+                            <select id="select7_select" class="select7_select" onchange="Select7.add(this, event);">
+                                <option class="select7_hide" value="filler"></option>
+                                <!-- <option value=1>Math</option>
+                                <option value=2>Science</option>
+                                <option value=3>English</option> -->
+                            </select>
+                            <div class="select7_items"></div>
+                        </div>
+                        <img src="/imgs/filter.png" class="filterIcon" onclick="app.filter()" width="30px" height="30px">
+                    </div>
+            </div>
+        </div>
+        <div class="right" id="right">
+            <div class="images"></div>
+        </div>
+    </main>
+    <script src="js/answer.js"></script>
+    <footer>
+        Copyright © YiChun Huang. All rights reserved.
+    </footer>
+</body>
+</html>

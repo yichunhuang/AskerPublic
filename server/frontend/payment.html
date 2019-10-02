@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="education website. updated at 201903281012." />
+<title>Asker</title>
+<link rel="stylesheet" href="css/fancy-checkout.css">
+<link rel="stylesheet" type="text/css" href="css/studentHeader.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/payment.css" media="all" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="js/graphql.js"></script>
+<script src="js/graphqlConfig.js"></script>
+<script src="js/studentVerification.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="set">
+            <a href='ask.html' >
+                <div class="navDiv withWords chat">
+                    <img src="/imgs/chat.png" class="navImg">
+                    <div class="navliveChat"> Live Chat</div>
+                </div>
+            </a>
+            <a href='studentHistory.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/history.png" class="navImg">  
+                    <div class="navhistory"> History</div>
+                </div>
+            </a>
+            
+        </div>
+        <div id="logo"> 
+            Asker
+        </div>
+        <div class="set">
+            <a href='payment.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/credit-card.png" class="navImg"> 
+                    <div class="navpayment"> Payment</div>
+                </div>
+            </a>
+            <a href='studentOrder.html'>
+                <div class="navDiv withWords">
+                    <img src="/imgs/order.png" class="navImg"> 
+                    <div class="navorder"> Order</div>
+                </div>
+            </a>
+            <a href='studentProfile.html'>
+                <div class="navDiv">
+                <img src="/imgs/profile.png" class="navImg"> 
+                </div>
+            </a>
+        </div>
+    </header>
+    <main>
+    <div id="errorMsg">
+        <div id="msg"></div>
+        <div class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</div>
+    </div> 
+    <div class="global">
+        <div class="resumo-pedido-area">
+          <div id="titulo-area" class="flex-area j-space-between titulo-area">
+            <h2>Ratio: 1/1</h2>
+          </div>
+          <div id="maquininha" class="cartao maquininha">
+  
+            <div class="flex-area j-space-between vai-sumir">
+                <p>Points</p>
+                <input class="point" id="point" type="text" name="point"> 
+            </div>
+            <div class="flex-area j-space-between vai-sumir">
+                <p>Email</p>
+                <input class="email" id="email" type="text" name="email" > 
+            </div>
+  
+            <div id="total" class="total flex-area j-space-between">
+                <p>Total</p>
+                <p id="lastTotal"></p>
+            </div>
+  
+            <div class="loading-area">
+              <div id="feedback-sucesso" class="feedback-sucesso">
+                <h3 class="compra-sucesso">Congrates! Thanks for buying!</h3>
+              </div>
+            </div>
+          </div>
+  
+          <div id="bordinha-nice" class="bordinha-nice"></div>
+        </div>
+  
+        <div id="card-area" class="card-area">
+          <h2 id="card-area-titulo">Checkout:</h2>
+  
+          <form novalidate>
+            <div class="flip-container">
+              <div id="flipper" class="flipper">
+                <div class="cartao cartao-front">
+                  <div class="flex-area j-space-between a-items-center header-cartao a-items-start">
+                    <!-- <h3 style="white-space: nowrap">Dados do cartão</h3> -->
+                    <img src="/imgs/visa.png" id="marca-cartao"  alt="Logo do seu cartão de crédito" height="30px">
+                  </div>
+                  
+                  <label>
+                        <div class="input-area" style="display: none">
+                          <input type="text" id="nome-front" class="nome-front" style="text-transform: uppercase" autocomplete="off" style="display: none">
+                        </div>
+                    </label>
+
+                  <label>
+                    <span>Card Number</span>
+                    
+                    <div class="input-area">
+                      <i class="material-icons">Card Number</i>
+                      <input type="text" id="numero-do-cartao-front" class="numero-do-cartao-front" style="display: none">
+                      <div id="card-number"></div>
+                    </div>
+                  </label>
+  
+                  <div class="flex-area j-space-between">
+                    <label class="w-48">
+                      <span>Data Expiry</span>
+                      <div class="input-area">
+                        <div id="card-expiry"></div>
+                        <input type="text" id="data-front" class="data-front" maxlength="7" style="display: none">
+                      </div>
+                    </label>
+  
+                    <label class="w-48">
+                      <span>CVV</span>
+                      <div class="input-area">
+                        <div id="card-cvc"></div> 
+                        <input type="number" id="cvv-front" class="cvv-front" maxlength="4" style="display: none">
+                      </div>
+                    </label>
+                  </div>
+                </div>
+  
+                <div id="cartao-back" class="cartao cartao-back">
+                  <div class="flex-area j-space-between a-items-center header-cartao">
+                    <img src="/imgs/visa.png" alt="Logo do seu cartão de crédito" height='30px'>
+                  </div>
+  
+                  <label>
+                    <h3 id="numero-do-cartao-back" class="numero-do-cartao-back"></h3>
+                  </label>
+  
+                  <label>
+                    <h3 id="nome-back" class="nome-back"></h3>
+                  </label>
+  
+                  <div class="flex-area j-space-between a-items-start">
+                    <label class="w-48">
+                      <h3 id="data-back" class="data-back"></h3>
+                    </label>
+  
+                    <img class="chip" src="/imgs/chip.png" alt="chip cartão">
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div id="button-area" class="flex-area j-center button-area">
+              <button type="button" id="btn-comprar" class="btn-comprar">
+                <span>Confirm</span>
+              </button>
+            </div>
+            <!-- <div id="card-errors" role="alert"></div> -->
+          </form>
+        </div>
+      </div>
+    </main>
+      
+  
+      <script src="js/fancy-checkout.js"></script>
+      <script>
+        const buyButton = document.getElementById('btn-comprar');
+        buyButton.addEventListener('click', async function (event) {
+            buyButton.innerHTML = 'Processing...';
+            event.preventDefault();
+            const {token, error} = await stripe.createToken(cardNumber);
+
+            if (error) {
+                buyButton.innerHTML = 'Confirm';
+                let displayError = document.getElementById('errorMsg');
+                displayError.style.visibility = 'visible';
+                let msg = document.getElementById('msg'); 
+                msg.textContent=error.message;
+                // buyButton.innerHTML = 'Confirm';
+                // Inform the customer that there was an error.
+                // const errorElement = document.getElementById('card-errors');
+                // errorElement.textContent = error.message;
+            } else {
+                // Send the token to your server.
+                stripeTokenHandler(token);
+                
+            }
+        
+        });
+      </script>
+      <footer>
+          Copyright © YiChun Huang. All rights reserved.
+      </footer>
+</body>
+
+<script src="js/payment.js"></script>
+</html>
