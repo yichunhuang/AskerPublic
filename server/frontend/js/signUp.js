@@ -30,12 +30,6 @@ app.signUp = () => {
         return;
     }
 
-    // let graph = graphql("http://192.168.99.100:32077/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // })
-
     getRadioValue = () => { 
         let elements = document.getElementsByClassName('identityButton'); 
         for (let i = 0; i < elements.length; i++) {

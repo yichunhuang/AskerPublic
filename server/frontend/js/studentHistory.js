@@ -5,13 +5,7 @@ window.addEventListener("DOMContentLoaded", app.init);
 
 app.allPosts = () => {
     let accessToken = localStorage.getItem('accessToken');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let keyword = document.getElementById('search-txt').value;
-    console.log(keyword);
     let query = (async () => {
         let result = await graph.query(`
             posts(status: "Answered", accessToken: "${accessToken}", keyword: "${keyword}") {
@@ -91,7 +85,6 @@ app.allPosts = () => {
 }
 
 app.getChatRecord = (id) => {
-    console.log(id);
     let carousel = document.getElementById("carousel");
     let history = document.getElementById("history");
     carousel.setAttribute("style", "display: none");
@@ -102,11 +95,6 @@ app.getChatRecord = (id) => {
         box.removeChild(child); 
         child = box.lastElementChild; 
     } 
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.query(`
             post(id: ${id}) {
@@ -145,7 +133,6 @@ app.getChatRecord = (id) => {
 )}
 
 app.close = ()=> {
-    console.log("hi");
     let carousel = document.getElementById("carousel");
     let history = document.getElementById("history");
     carousel.setAttribute("style", "display: block");

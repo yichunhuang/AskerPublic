@@ -77,7 +77,7 @@ module.exports={
                     let now = Date.now();
                     let facebookID = profile.id;
                     let {name, email} = profile;
-                    let picture = "https://graph.facebook.com/"+profile.id+"/picture?type=large";   
+                    let picture = "https://graph.facebook.com/" + profile.id + "/picture?type=large";   
                     let accessToken = encrypt(name + email + now);
                     let accessExpired = now + tokenDuration;
 
@@ -102,7 +102,6 @@ module.exports={
 
         }
     },
-    // Read By Id
     readById: (id) => {
         return bookshelf.transaction( async (transaction) => {
             if (!id)

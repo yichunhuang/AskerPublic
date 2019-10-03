@@ -22,12 +22,6 @@ app.signIn = () => {
         return;
     }
 
-
-    // let graph = graphql("http://192.168.99.100:32077/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     (async () => {
         let result =  await graph.query(`
             user(provider: "native", email: "${email}", password: "${password}") {
@@ -60,11 +54,6 @@ app.signIn = () => {
 }
 // FB
 app.fbSignIn = (accessToken) => {
-    // let graph = graphql("http://192.168.99.100:32077/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     (async () => {
         let result =  await graph.query(`
             user(provider: "facebook", accessToken: "${accessToken}") {

@@ -5,11 +5,6 @@ window.addEventListener("DOMContentLoaded", app.init);
 
 app.allPosts = () => {
     let accessToken = localStorage.getItem('accessToken');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let keyword = document.getElementById('search-txt').value;
     let query = (async () => {
         let result = await graph.query(`
@@ -101,11 +96,6 @@ app.getChatRecord = (id) => {
         box.removeChild(child); 
         child = box.lastElementChild; 
     } 
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.query(`
             post(id: ${id}) {

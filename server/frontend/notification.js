@@ -1,9 +1,4 @@
 app.getSubscription =function(){
-	// let graph = graphql("http://localhost:3000/graphql", {
-  //       alwaysAutodeclare: true,
-  //       asJSON: true,
-  //       debug: true
-  // });
   (async () => {
       let result =  await graph.query(`
           subjects {
@@ -72,7 +67,6 @@ const publicVapidKey =
     "BM2ztETnZLvv7HW9BbJomsq7HLDM9WTdosjts9iwy0W61AY8ZJij8cHPyrHSUzp0M8gIHCoaWZxTKjBazO_zbJA";
 
 function sw() {
-  console.log("sw function");
   // Check for service worker
   if ("serviceWorker" in navigator) {
     console.log('service Worker here');
@@ -100,11 +94,6 @@ async function send() {
     applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
   });
   
-  // let graph = graphql("http://localhost:3000/graphql", {
-  //       alwaysAutodeclare: true,
-  //       asJSON: true,
-  //       debug: true
-  // });
   let {endpoint, expirationTime, keys} = JSON.parse(JSON.stringify(subscription));
   let {p256dh, auth} = keys;
   (async () => {

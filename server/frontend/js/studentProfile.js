@@ -5,11 +5,6 @@ window.addEventListener("DOMContentLoaded", app.init);
 
 app.getProfile = () => {
     let accessToken = localStorage.getItem('accessToken');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.query(`
             userProfile(accessToken: "${accessToken}") {
@@ -35,14 +30,12 @@ app.getProfile = () => {
         let time = new Date(parseInt(profile.createdAt, 10));
         time = time.toLocaleDateString();
         
-        // let naiyo = document.getElementById('naiyo');
         let naiyo = app.createElement("div", {atrs: {
             className: "naiyo", src: src
         }}, card); 
         let profiles = app.createElement("div", {atrs: {
             className: "profiles"
         }}, naiyo)
-        // let profiles = document.getElementById("profiles");
         let child = profiles.lastElementChild;  
         while (child) { 
             profiles.removeChild(child); 
@@ -67,7 +60,6 @@ app.getProfile = () => {
 				click:app.signOut
 			}
         }, naiyo); 
-        // <div id="logout" class="logout" onclick="app.signOut()">Log Out</div>
     });
 }
 

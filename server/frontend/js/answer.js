@@ -2,11 +2,6 @@
 // show post id / title / subject / content / images
 app.init=function(){
     let accessToken = localStorage.getItem('accessToken');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     (async () => {
         let result = await graph.query(`
             posts(status: "Answering", accessToken: "${accessToken}") {
@@ -26,11 +21,6 @@ app.init=function(){
 window.addEventListener("DOMContentLoaded", app.init);
 
 app.allPosts = () => {
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.query(`
             posts(status: "Unanswer") {
@@ -80,11 +70,6 @@ app.getPost = (id) => {
         right.removeChild(child); 
         child = right.lastElementChild; 
     } 
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.query(`
             post(id: ${id}) {
@@ -156,11 +141,6 @@ app.getPost = (id) => {
 
 app.updatePost = (id) => {
     let accessToken = localStorage.getItem('accessToken');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.mutate(`
             updatePost(id: ${id}, accessToken: "${accessToken}", status: "Answering") {
@@ -187,12 +167,6 @@ app.filter = () => {
     for (let i = 0; i < subjects.length; i++) {
         subjectIds.push(parseInt(subjects[i].dataset.optionValue));
     }
-    console.log(subjectIds);
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.query(`
             posts(status: "Unanswer", subjectIds: [${subjectIds}]) {
@@ -241,11 +215,6 @@ app.filter = () => {
 }
 
 app.getSubjects =function(){
-// 	let graph = graphql("http://localhost:3000/graphql", {
-//         alwaysAutodeclare: true,
-//         asJSON: true,
-//         debug: true
-//   });
   (async () => {
       let result =  await graph.query(`
           subjects {

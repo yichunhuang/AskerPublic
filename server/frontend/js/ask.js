@@ -1,10 +1,5 @@
 app.init=function(){
     let accessToken = localStorage.getItem('accessToken');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let hasAnswering = graph.query(`
     posts(status: "Answering", accessToken: "${accessToken}") {
         id
@@ -27,11 +22,6 @@ app.init=function(){
 };
 window.addEventListener("DOMContentLoaded", app.init);
 app.getSubscription =function(){
-// 	let graph = graphql("http://localhost:3000/graphql", {
-//         alwaysAutodeclare: true,
-//         asJSON: true,
-//         debug: true
-//   });
   (async () => {
       let result =  await graph.query(`
           subjects {
@@ -61,7 +51,6 @@ app.newPost = () => {
     let files = document.getElementById('files').files;
     let accessToken = localStorage.getItem('accessToken');
     let images = [];
-    console.log(files);
     if (!title) {
         let err = document.getElementById('errorMsg');
         err.style.visibility = 'visible';
@@ -128,10 +117,4 @@ app.newPost = () => {
         // Read in the image file as a data URL.
         reader.readAsBinaryString(f); 
     }
-
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // })
 }

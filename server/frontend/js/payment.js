@@ -16,9 +16,6 @@ const style = {
         iconColor: '#fa755a'
     }
 };
-// const card = elements.create('card', {style})
-
-  
 // Add an instance of the card Element into the `card-element` <div>.
 // card.mount('#card-element');
 const cardNumber = elements.create('cardNumber', {style});
@@ -47,11 +44,6 @@ const stripeTokenHandler = (token) => {
     let email = document.getElementById('email').value; 
     let point = document.getElementById('point').value;
     let buyButton = document.getElementById('btn-comprar');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
 
     if (!point) {
         buyButton.innerHTML = 'Confirm';

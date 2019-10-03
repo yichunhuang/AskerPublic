@@ -1,10 +1,5 @@
 let accessToken = localStorage.getItem('accessToken');
 let accessExpired = localStorage.getItem('accessExpired');
-// let graph = graphql("http://192.168.99.100:32077/graphql", {
-//     alwaysAutodeclare: true,
-//     asJSON: true,
-//     debug: true
-// });
 (async () => {
     let result = await graph.query(`
         verifyUser(accessToken: "${accessToken}") {

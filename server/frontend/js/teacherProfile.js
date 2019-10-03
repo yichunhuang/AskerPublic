@@ -7,11 +7,6 @@ window.addEventListener("DOMContentLoaded", app.init);
 
 app.getProfile = () => {
     let accessToken = localStorage.getItem('accessToken');
-    // let graph = graphql("http://localhost:3000/graphql", {
-    //     alwaysAutodeclare: true,
-    //     asJSON: true,
-    //     debug: true
-    // });
     let query = (async () => {
         let result = await graph.query(`
             userProfile(accessToken: "${accessToken}") {

@@ -13,7 +13,6 @@
       this.canvas = document.createElement("canvas");
       this.canvas.width = this.CANVAS_WIDTH;
       this.canvas.height = this.CANVAS_HEIGHT;
-      // console.log(this.html);
       // this.canvas.width = this.html[0].clientWidth;
       // this.canvas.height = this.html[0].clientHeight;
       this.html.append(this.canvas);
@@ -36,7 +35,6 @@
       );
   
       // initialize the Socket.IO connection.
-      // this.connection = new Drawing.Connection(location);
       this.connection = socket; 
   
       // initialize the reset button.
@@ -56,23 +54,7 @@
       this.whiteboard.init();
     };
   
-    //========================================================
-    // Drawing.Connection
-    //========================================================
-    // Drawing.Connection = function(location) {
-    //   this.location = location;
-    //   this.uri = "http://" + location.host;
-    //   this.socket = io.connect(this.uri);
-  
-    //   // Proxies these functions, so we don't violate
-    //   // the encapsulation.
-    //   this.on = this.socket.on.bind(this.socket);
-    //   this.emit = this.socket.emit.bind(this.socket);
-    // };
-  
-    //========================================================
     // Drawing.Coordinator
-    //========================================================
     Drawing.Coordinator = function(connection, whiteboard) {
       this.connection = connection;
       this.whiteboard = whiteboard;
@@ -107,9 +89,7 @@
       });
     };
   
-    //========================================================
     // Drawing.ColorButtonToolbar
-    //========================================================
     Drawing.ColorButtonToolbar = function(whiteboard, buttons) {
       this.buttons = buttons;
       this.whiteboard = whiteboard;
@@ -143,9 +123,7 @@
       });
     };
   
-    //========================================================
     // Drawing.ResetButton
-    //========================================================
     Drawing.ResetButton = function(connection, whiteboard, button) {
       this.button = button;
       this.whiteboard = whiteboard;
@@ -169,9 +147,7 @@
       this.whiteboard.reset();
     };
   
-    //========================================================
     // Drawing.SaveButton
-    //========================================================
     Drawing.SaveButton = function(window, button, canvas) {
       this.window = window;
       this.button = button;
@@ -189,9 +165,6 @@
       win.document.write('<iframe src="' + this.canvas.toDataURL("image/png")  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
     };
   
-    //========================================================
-    // Initialize all the things!
-    //========================================================
     Drawing.init();
   })();
 

@@ -16,9 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     socket.emit("init");
-    // socket.on("status", (condition) => {
-    //     status.innerText = condition;
-    // });
     
     socket.on("userId", (data) => {
         userId = data;
@@ -193,7 +190,6 @@ function scrollTo(element, duration) {
         return
     }
     var target = element.scrollHeight
-    console.log(target);
     target = Math.round(target)
     duration = Math.round(duration)
     if (duration < 0) {
@@ -207,7 +203,6 @@ function scrollTo(element, duration) {
     var end_time = start_time + duration
     var start_top = element.scrollTop
     var distance = target - start_top
-    // based on http://en.wikipedia.org/wiki/Smoothstep
     var smooth_step = function (start, end, point) {
         if (point <= start) { return 0 }
         if (point >= end) { return 1 }

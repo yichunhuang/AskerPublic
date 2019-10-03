@@ -20,8 +20,7 @@ module.exports={
                 return new Error('Point Invalid')
             let post = await Post.forge({title, subjectId, content, studentId: studentJSON.id, createdAt: Date().toString()}, {transacting: transaction}).save();
 
-            // TODO: async return 
-            let filesPath =  images.map((img, index) => {
+            let filesPath =  await images.map((img, index) => {
                 let base64Arr = Buffer.from(img, 'base64');
                 const params = {
                     Bucket: 'stylishbucket',
@@ -77,9 +76,9 @@ module.exports={
                     postUpdated = await post.set({status: 'Discard'}, {transacting: transaction}).save();
                 }
                 else {
-                    await student.set({point: student.toJSON().point-10}, {transacting: transaction}).save();
+                    await student.set({point: student.toJSON().point - 10}, {transacting: transaction}).save();
                     let teacher = await User.where({id: post.toJSON().teacherId}).fetch({require:false});
-                    await teacher.set({point: teacher.toJSON().point+10}, {transacting: transaction}).save(); 
+                    await teacher.set({point: teacher.toJSON().point + 10}, {transacting: transaction}).save(); 
                     postUpdated = await post.set({status}, {transacting: transaction}).save();
                 }
                 cache.hdel('post', id);
