@@ -1,5 +1,5 @@
 const fs=require('fs');
-const client = require("./lib/redis.js");
+const cache = require("./lib/redis.js");
 const s3 = require("./lib/s3.js");
 const Post = require('./model/post.js');
 const User = require('./model/user.js');
@@ -33,7 +33,7 @@ module.exports = (io, siofu) => {
                     msg.postId = post.id;
                     msg.senderId = user.id;
                     msg.createdAt = Date.now();
-                    client.hset(post.id, JSON.stringify(msg), "value");
+                    cache.hset(post.id, JSON.stringify(msg), "value");
                     io.to(post.id).emit("msg", msg);
 
                     fs.unlink(event.file.pathName, (err) => {
@@ -103,7 +103,7 @@ module.exports = (io, siofu) => {
             msg.postId = post.id;
             msg.senderId = user.id;
             msg.createdAt = Date.now();
-            client.hset(post.id, JSON.stringify(msg), "value");
+            cache.hset(post.id, JSON.stringify(msg), "value");
             io.to(post.id).emit("msg", msg);
         });
         
@@ -120,14 +120,14 @@ module.exports = (io, siofu) => {
             console.log("someone disconnect");
             if (!post || !post.id)
                 return;
-            client.hkeys(post.id, function (err, values) {
+            cache.hkeys(post.id, function (err, values) {
                 if (!values.length)
                     return;
                 for (let i = 0; i < values.length; i++)
                     values[i] = (JSON.parse(values[i]));
                 values.sort((a, b) => a.createdAt - b.createdAt);
                 ChatRecord.new(values).then((data) => {
-                    client.del(post.id);
+                    cache.del(post.id);
                 })
             });
             if (io.nsps['/'].adapter.rooms[post.id])

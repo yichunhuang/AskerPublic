@@ -1,7 +1,8 @@
 const bookshelf = require('../lib/bookshelf.js');
 const base64Img = require('base64-img');
-const client = require("../lib/redis.js");
-let s3 = require("../lib/s3.js");
+const cache = require("../lib/redis.js");
+const s3 = require("../lib/s3.js");
+const validateUser = require("../lib/validation.js");
 const {ChatRecord, User, Subject, Post} = require('../lib/schema.js');
 
 module.exports={
@@ -62,10 +63,10 @@ module.exports={
                 if (!teacher)
                     return new Error('Token Invalid'); 
                 let postUpdated = await post.set({teacherId: teacher.id, status}, {transacting: transaction}).save();
-                client.hdel('post', id);
+                cache.hdel('post', id);
                 return (postUpdated.toJSON());
             }
-            else if (isStudentLeavePost(status, accessToken)) {
+            else if (isStudentLeavePost(status, accesccsToken)) {
                 let student = await validateUser(accessToken);
                 let postUpdated = new Object();
                 if (!student)
@@ -81,7 +82,7 @@ module.exports={
                     await teacher.set({point: teacher.toJSON().point+10}, {transacting: transaction}).save(); 
                     postUpdated = await post.set({status}, {transacting: transaction}).save();
                 }
-                client.hdel('post', id);
+                cache.hdel('post', id);
                 return (postUpdated.toJSON());
             }
             else if (isTeacherLeavePost(status, accessToken)) {
@@ -103,13 +104,13 @@ module.exports={
         return bookshelf.transaction( async (transaction) => {
             if (!id)
                 return new Error('Post Not Found');
-            return client.hgetAsync('post', id).then(async (cachePost) => {
+            return cache.hgetAsync('post', id).then(async (cachePost) => {
                 if (cachePost)  
                     return JSON.parse(cachePost);
                 let post = await Post.where({id}).fetch({
                     withRelated: ['chatRecords', 'student', 'teacher', 'subject'], require:false});
                 if (post) {
-                    client.hset('post', id, JSON.stringify(post));
+                    cache.hset('post', id, JSON.stringify(post));
                     return (post.toJSON());
                 }
                 else {
@@ -131,7 +132,7 @@ module.exports={
             if (denyAccessToHistory(status, accessToken))
                 return new Error('Token Invalid');
             if (accessToken) {
-                await client.getAsync(accessToken).then(async (user) => {
+                await cache.getAsync(accessToken).then(async (user) => {
                     if (!user) 
                         return new Error('Token Invalid');
                     user = JSON.parse(user);
@@ -162,7 +163,6 @@ module.exports={
     }
 };
 
-let validateUser = (accessToken) => User.where({accessToken}).andWhere('accessExpired', '>', Date.now()).fetch({require:false}); 
 let isTeacherEnterPost = (status, accessToken) => status === 'Answering' && accessToken;
 let isStudentLeavePost = (status, accessToken) => status === 'Answered' && accessToken;
 let isTeacherLeavePost = (status, accessToken) => status === 'Unanswer' && accessToken;

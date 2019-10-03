@@ -1,8 +1,8 @@
 const bookshelf = require('../lib/bookshelf.js');
+const validateUser = require("../lib/validation.js");
 const {User, TeacherSubscription} = require('../lib/schema.js');
 
 module.exports={
-    // Update Subscription
     update: (subscriptionData) => {
         let {endpoint, expirationTime, p256dh, auth, subjectIds, accessToken} = subscriptionData;
         if (!endpoint || !expirationTime || !p256dh || !auth || !subjectIds || !accessToken) {
@@ -10,13 +10,13 @@ module.exports={
         }
         
         return bookshelf.transaction(async (transaction) => {
-            let teacher = await User.where({accessToken}).andWhere('accessExpired', '>', Date.now()).fetch({require:false});
+            let teacher = await validateUser(accessToken);
             if (!teacher)
                 return new Error('Token Invalid');
             let subscription = {endpoint, expirationTime, keys: {p256dh, auth}};
-            subscription = JSON.stringify(subscription);
-            teacher = await teacher.set({subscription}, {transacting: transaction}).save();
-            await TeacherSubscription.where({teacherId: teacher.id}, {transacting: transaction}).destroy({require:false});
+            let subscriptionJSON = JSON.stringify(subscription);
+            let teacherUpdated = await teacher.set({subscriptionJSON}, {transacting: transaction}).save();
+            await TeacherSubscription.where({teacherId: teacherUpdated.id}, {transacting: transaction}).destroy({require:false});
             subjectIds.forEach(async (subjectId) => {
                 await TeacherSubscription.forge({teacherId: teacher.id, subjectId}, {transacting: transaction}).save();
             });
@@ -26,3 +26,4 @@ module.exports={
         });
     },
 };
+
