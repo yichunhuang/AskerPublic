@@ -11,7 +11,7 @@ a {
 }
 section {
     width: 100%;
-    height: 60%;
+    height: 500px;
     color: #fff;
     /* background: linear-gradient(-45deg, #EE7752, #e73c7E, #23A6D5, #23D5AB); */
     background: linear-gradient(-45deg, #9E212E,#CE3142, #3D2563,#1C0C3D );
@@ -43,9 +43,9 @@ main {
     justify-content: space-between;
 }
 .left {
-    width: 30%;
+    width: 35%;
     margin-top: 100px;
-    margin-left: 10%;
+    margin-left: 4%;
 }
 .title {
     font-size: 2.8em;
@@ -56,7 +56,8 @@ main {
     font-size: 1.3em;
 }
 .getStart {
-    margin-top: 90px;
+    margin-top: 8%;
+    margin-bottom: 5%;
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 1.3em;
@@ -71,6 +72,7 @@ main {
 }
 .right {
     margin-right: 15%;
+    width: 40%;
 }
 
 .Part1 {
@@ -217,6 +219,11 @@ footer {
     100% {
         background-position: 0 50%;
     }
+}
+
+video {
+    width: 100%;
+    height: 90%;
 }
 
 

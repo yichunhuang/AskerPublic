@@ -58,7 +58,9 @@ module.exports={
 
             if (isTeacherEnterPost(status, accessToken)) 
             {
+                console.log('hi');
                 let teacher = await validateUser(accessToken);
+                console.log(teacher);
                 if (!teacher)
                     return new Error('Token Invalid'); 
                 let postUpdated = await post.set({teacherId: teacher.id, status}, {transacting: transaction}).save();
@@ -143,11 +145,11 @@ module.exports={
             }
 
             let post = new Object();
-            if (filterSubjects) {
+            if (filterSubjects(subjectIds)) {
                 post = await Post.where('subjectId', 'IN', subjectIds).andWhere(conditions).fetchAll({
                 withRelated: ['chatRecords', 'student', 'teacher', 'subject'], require:false});
             }
-            else if (filterKeyword) {
+            else if (filterKeyword(keyword)) {
                 post = await Post.where('title', 'LIKE', '%'+keyword+'%').andWhere(conditions).fetchAll({
                 withRelated: ['chatRecords', 'student', 'teacher', 'subject'], require:false});
             }

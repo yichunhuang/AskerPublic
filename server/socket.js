@@ -81,6 +81,7 @@ module.exports = (io, siofu) => {
                 if (isNewComingTeacher)
                     promiseArray.push(Post.update({id: post.id, teacherId: user.id, status: 'Answering'}));
                 Promise.all(promiseArray).then((promises) => {
+                    let chatRecord = promises[0];
                     socket.join(post.id);
                     socket.emit("status", 'init ok');
                     socket.emit("userId", user.id);
