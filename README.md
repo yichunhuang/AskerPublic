@@ -10,9 +10,6 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
 ![](https://i.imgur.com/4Jmrs4t.png)
 
 
-## Table Content
-[TOC]
-
 ---
 
 ## Backend Technique
