@@ -4,6 +4,7 @@ const request = require('request');
 const {User} = require('../lib/schema.js');
 const bookshelf = require('../lib/bookshelf.js');
 const validateUser = require("../lib/validation.js");
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const tokenDuration = 30*24*60*60*1000;
 const cacheDuration = 30*24*60*60; 
 let encrypt = (originalData) => {
@@ -33,7 +34,7 @@ module.exports={
                 return new Error('Email Already Exists'); 
             }
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
     // Sign In
@@ -60,7 +61,7 @@ module.exports={
                 cache.set(accessToken, JSON.stringify(user), 'EX', cacheDuration);
                 return (user.toJSON());
             }).catch((err) => {
-                return new Error(err);
+                return errorHandling(err);
             });
         }
         else if (provider === 'facebook') {
@@ -97,7 +98,7 @@ module.exports={
                     }
                 });
             }).catch((err) => {
-                return new Error(err);
+                return errorHandling(err);
             }); 
 
         }
@@ -109,7 +110,7 @@ module.exports={
             let user = await User.where({id}).fetch({require:false});
             return (user) ? user.toJSON() : new Error('User Not Found'); 
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
     readByToken: (accessToken) => {
@@ -122,14 +123,14 @@ module.exports={
                 return new Error('User Not Found'); 
             }
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
     verifyByToken: (accessToken) => {
         return cache.getAsync(accessToken).then((user) => {
             return(user) ?  JSON.parse(user) : new Error('User Not Found'); 
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     } 
 };
