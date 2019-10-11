@@ -5,10 +5,6 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
 #### DEMO URL: https://www.youtube.com/watch?v=nh9Pyt4JNE8
 [![DEMO](http://img.youtube.com/vi/nh9Pyt4JNE8/0.jpg)](http://www.youtube.com/watch?v=nh9Pyt4JNE8 "DEMO")
 
-![](https://i.imgur.com/m0oCjPo.png)
-
-![](https://i.imgur.com/4Jmrs4t.png)
-
 ---
 
 ## Table of Contents

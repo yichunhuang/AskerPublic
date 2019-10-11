@@ -42,7 +42,13 @@ const TeacherOrder = bookshelf.Model.extend({
 });
 
 const TeacherSubscription = bookshelf.Model.extend({
-    tableName: 'teacherSubscription'
+    tableName: 'teacherSubscription',
+    teacher: function() {
+        return this.belongsTo(User, 'teacherId');
+    },
+    subject: function() {
+        return this.belongsTo(Subject, 'subjectId');
+    }
 });
 
 module.exports={

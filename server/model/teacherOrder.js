@@ -1,6 +1,7 @@
 const bookshelf = require('../lib/bookshelf.js');
 const mailer = require('../lib/mailer.js');
 const validateUser = require("../lib/validation.js");
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const {User, TeacherOrder} = require('../lib/schema.js');
 
 
@@ -19,7 +20,7 @@ module.exports={
                 return new Error('Student Not Yet Has Order'); 
             }
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     }
 };

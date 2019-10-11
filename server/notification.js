@@ -1,10 +1,10 @@
+require('dotenv').config();
 const webpush = require('web-push');
 const MySQLEvents = require('@rodrigogs/mysql-events');
 const {TeacherSubscription} = require('./lib/schema.js')
 const path = require('path');
 const publicVapidKey = process.env["PUBLIC_VAPID_KEY"];
 const privateVapidKey = process.env["PRIVATE_VAPID_KEY"];
-
 webpush.setVapidDetails(
     'mailto:b03704074@ntu.edu.tw', 
     publicVapidKey, 
@@ -16,10 +16,11 @@ module.exports = {
        (async () => {
             const postEvent = new MySQLEvents(
                 {
-                    host:               '127.0.0.1',
+                    host:               process.env["DB_HOST"],
                     port:               3306,
                     user:               process.env["DB_USER"],
-                    password:           process.env["DB_PASSWORD"]
+                    password:           process.env["DB_PASSWORD"],
+                    database:           process.env["DB_DATABASE"]
                 }, 
                 {
                     startAtEnd: true,serverId: 2,
@@ -31,7 +32,7 @@ module.exports = {
             postEvent.addTrigger(
                 {
                     name: 'New Post',
-                    expression: process.env["DB_DATABASE"] + '.post',
+                    expression:  process.env["DB_DATABASE"] + '.post',
                     statement: MySQLEvents.STATEMENTS.INSERT,
                     onEvent: async (event) => {
                         let subjectIdOfPost = event.affectedRows[0].after.subjectId;

@@ -1,5 +1,6 @@
 const bookshelf = require('../lib/bookshelf.js');
 const validateUser = require("../lib/validation.js");
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const {User, TeacherSubscription} = require('../lib/schema.js');
 
 module.exports={
@@ -15,14 +16,14 @@ module.exports={
                 return new Error('Token Invalid');
             let subscription = {endpoint, expirationTime, keys: {p256dh, auth}};
             let subscriptionJSON = JSON.stringify(subscription);
-            let teacherUpdated = await teacher.set({subscriptionJSON}, {transacting: transaction}).save();
+            let teacherUpdated = await teacher.set({subscription: subscriptionJSON}, {transacting: transaction}).save();
             await TeacherSubscription.where({teacherId: teacherUpdated.id}, {transacting: transaction}).destroy({require:false});
             subjectIds.forEach(async (subjectId) => {
                 await TeacherSubscription.forge({teacherId: teacher.id, subjectId}, {transacting: transaction}).save();
             });
             return ('Subscription Updated');
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
 };

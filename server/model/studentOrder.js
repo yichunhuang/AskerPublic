@@ -3,6 +3,7 @@ const bookshelf = require('../lib/bookshelf.js');
 const validateUser = require("../lib/validation.js");
 const mailer = require('../lib/mailer.js');
 const cache = require("../lib/redis.js");
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const {User, StudentOrder} = require('../lib/schema.js');
 
 module.exports={
@@ -27,10 +28,10 @@ module.exports={
                     return StudentOrder.forge({studentId: student.id, total, status: 'unpaid', recipientEmail, payment: JSON.stringify(err.raw), createdAt: Date().toString()}, {transacting: transaction}).save()
                     .then((order) => {return order.toJSON()});
                 }
-                return new Error(err);
+                return errorHandling(err);
             });
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         }); 
     },
     readAll: (accessToken) => {
@@ -52,7 +53,7 @@ module.exports={
                 }
             });
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     }
 };

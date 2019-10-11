@@ -3,6 +3,7 @@ const base64Img = require('base64-img');
 const cache = require("../lib/redis.js");
 const s3 = require("../lib/s3.js");
 const validateUser = require("../lib/validation.js");
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const {ChatRecord, User, Subject, Post} = require('../lib/schema.js');
 
 module.exports={
@@ -42,7 +43,7 @@ module.exports={
             let postWithImg = await post.set({images: filesPath.toString()}, {transacting: transaction}).save();
             return (postWithImg.toJSON());
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
     update: (postData) => {
@@ -58,16 +59,14 @@ module.exports={
 
             if (isTeacherEnterPost(status, accessToken)) 
             {
-                console.log('hi');
                 let teacher = await validateUser(accessToken);
-                console.log(teacher);
                 if (!teacher)
                     return new Error('Token Invalid'); 
                 let postUpdated = await post.set({teacherId: teacher.id, status}, {transacting: transaction}).save();
                 cache.hdel('post', id);
                 return (postUpdated.toJSON());
             }
-            else if (isStudentLeavePost(status, accesccsToken)) {
+            else if (isStudentLeavePost(status, accessToken)) {
                 let student = await validateUser(accessToken);
                 let postUpdated = new Object();
                 if (!student)
@@ -98,7 +97,7 @@ module.exports={
                 return new Error('Status Invalid.')
             }
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     }, 
     readById: (id) => {
@@ -119,7 +118,7 @@ module.exports={
                 }
             });
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
     readAll: (postData) => {
@@ -159,7 +158,7 @@ module.exports={
             }
             return (post.toJSON());
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     }
 };

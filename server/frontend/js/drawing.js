@@ -1,8 +1,8 @@
   (function(){
     let Drawing = {};
   
-    Drawing.CANVAS_WIDTH = 900;
-    Drawing.CANVAS_HEIGHT = 860;
+    Drawing.CANVAS_WIDTH = 700;
+    Drawing.CANVAS_HEIGHT = 660;
   
     Drawing.init = function() {
       // the html container.
