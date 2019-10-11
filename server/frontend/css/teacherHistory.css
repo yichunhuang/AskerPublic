@@ -14,9 +14,9 @@ html, body {
   }
   #carousel {
     /* background-color: #B04632; */
-    margin-top: 100px;
+    margin-top: 55px;
     position: relative;
-    height: 1000px;
+    height: 100%;
     /* width: 1200px; */
     /* top: 50%; */
     /* transform: translateY(-10%); */

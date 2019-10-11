@@ -21,20 +21,20 @@
         let url = window.location.href;
         url = new URL(url);
         let postId = url.searchParams.get("postId");
-        // let socket = io('asker.mu.yichunhuang.com:80', {
-        //     transports: ['websocket'], 
-        //     query: {
-        //         token:  accessToken,
-        //         postId: postId
-        //     }
-        // });
-        let socket = io('127.0.0.1:3000', {
+        let socket = io('asker.mu.yichunhuang.com:80', {
             transports: ['websocket'], 
             query: {
                 token:  accessToken,
                 postId: postId
             }
         });
+        // let socket = io('127.0.0.1:3000', {
+        //     transports: ['websocket'], 
+        //     query: {
+        //         token:  accessToken,
+        //         postId: postId
+        //     }
+        // });
     </script>
 </head>
 <body> 

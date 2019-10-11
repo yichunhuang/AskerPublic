@@ -58,16 +58,14 @@ module.exports={
 
             if (isTeacherEnterPost(status, accessToken)) 
             {
-                console.log('hi');
                 let teacher = await validateUser(accessToken);
-                console.log(teacher);
                 if (!teacher)
                     return new Error('Token Invalid'); 
                 let postUpdated = await post.set({teacherId: teacher.id, status}, {transacting: transaction}).save();
                 cache.hdel('post', id);
                 return (postUpdated.toJSON());
             }
-            else if (isStudentLeavePost(status, accesccsToken)) {
+            else if (isStudentLeavePost(status, accessToken)) {
                 let student = await validateUser(accessToken);
                 let postUpdated = new Object();
                 if (!student)

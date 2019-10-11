@@ -15,7 +15,7 @@ module.exports={
                 return new Error('Token Invalid');
             let subscription = {endpoint, expirationTime, keys: {p256dh, auth}};
             let subscriptionJSON = JSON.stringify(subscription);
-            let teacherUpdated = await teacher.set({subscriptionJSON}, {transacting: transaction}).save();
+            let teacherUpdated = await teacher.set({subscription: subscriptionJSON}, {transacting: transaction}).save();
             await TeacherSubscription.where({teacherId: teacherUpdated.id}, {transacting: transaction}).destroy({require:false});
             subjectIds.forEach(async (subjectId) => {
                 await TeacherSubscription.forge({teacherId: teacher.id, subjectId}, {transacting: transaction}).save();
