@@ -1,5 +1,6 @@
 const bookshelf = require('../lib/bookshelf.js');
 const cache = require("../lib/redis.js");
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const {Subject} = require('../lib/schema.js');
 
 module.exports={
@@ -19,7 +20,7 @@ module.exports={
                 }
             })
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     }
 };

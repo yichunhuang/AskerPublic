@@ -1,5 +1,6 @@
 const bookshelf = require('../lib/bookshelf.js');
 const validateUser = require("../lib/validation.js");
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const {User, TeacherSubscription} = require('../lib/schema.js');
 
 module.exports={
@@ -22,7 +23,7 @@ module.exports={
             });
             return ('Subscription Updated');
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
 };

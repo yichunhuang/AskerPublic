@@ -1,5 +1,6 @@
 const bookshelf = require('../lib/bookshelf.js');
 const base64Img = require('base64-img');
+const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const {ChatRecord} = require('../lib/schema.js');
 
 module.exports={
@@ -14,7 +15,7 @@ module.exports={
                 }
             }
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     },
     readAll: (recordData) => {
@@ -22,7 +23,7 @@ module.exports={
             let record = await ChatRecord.where(recordData).fetchAll({require:false});
             return (record) ? record.toJSON() : new Error('Post Not Found');
         }).catch((err) => {
-            return new Error(err);
+            return errorHandling(err);
         });
     }
 };
