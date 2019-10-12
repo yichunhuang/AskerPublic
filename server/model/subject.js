@@ -14,7 +14,6 @@ module.exports={
                 let subject = await Subject.fetchAll({require:false});
                 if (subject) {
                     cache.set('subjects', JSON.stringify(subject));
-                    console.log(subject.toJSON());
                     return (subject.toJSON());
                 }
                 else {
