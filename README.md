@@ -5,6 +5,19 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
 #### DEMO URL: https://www.youtube.com/watch?v=nh9Pyt4JNE8
 [![DEMO](http://img.youtube.com/vi/nh9Pyt4JNE8/0.jpg)](http://www.youtube.com/watch?v=nh9Pyt4JNE8 "DEMO")
 
+### Play with Testing Account
+#### Student
+email: student_test@gmail.com <br>
+password: 123456
+- Payment:
+    - Card Number: 4242 4242 4242 4242
+    - Date Expiry: 01/23 
+    - CVV: 123
+
+#### Teacher
+email: teacher_test@gmail.com <br>
+password: 123456
+
 ---
 
 ## Table of Contents
