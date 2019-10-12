@@ -1,9 +1,9 @@
 const crypto=require('crypto');
 const cache = require("../lib/redis.js");
-const request = require('request');
 const {User} = require('../lib/schema.js');
 const bookshelf = require('../lib/bookshelf.js');
 const validateUser = require("../lib/validation.js");
+let getFacebookProfile = require("../lib/facebook.js"); 
 const errorHandling = require("../lib/errorHandling.js").errorHandling;
 const tokenDuration = 30*24*60*60*1000;
 const cacheDuration = 30*24*60*60; 
@@ -133,27 +133,4 @@ module.exports={
             return errorHandling(err);
         });
     } 
-};
-
-let getFacebookProfile = function (accessToken) {
-    return new Promise((resolve, reject) => {
-        if (!accessToken) {
-            resolve(null);
-            return;
-        }
-        request(
-            {
-            url: "https://graph.facebook.com/me?fields=id,name,email&access_token=" + accessToken,
-            method: "GET"
-            }, 
-            function(error, response, body){
-                body = JSON.parse(body);
-                if (body.error) {
-                    reject(body.error);
-                }
-                else {
-                    resolve(body);
-                }
-        });
-    });
 };
