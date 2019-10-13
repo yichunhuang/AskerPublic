@@ -183,8 +183,7 @@ asker.mu.yichunhuang.com
 | status | String | TeacherOrder's status (received / unreceived) |
 | recipientEmail | String  | Order information is sent to this email
 | createdAt | String  | Time when TeacherOrder is created |
-<br>
-<hr>
+
 ### GraphQL Schema
 #### RootQueryType
 ![](https://i.imgur.com/SQ5SZpE.png)
