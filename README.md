@@ -107,7 +107,7 @@ password: 123456
 ### Host Name
 
 asker.mu.yichunhuang.com
-### Response Obejcts
+### Response Objects
 
 * `User Object`
 
