@@ -32,7 +32,7 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
       * [Contact](#contact)
 
 ---
-## [Main Features](https://www.youtube.com/watch?v=nh9Pyt4JNE8)
+## Main Features
 - Payment with Stripe
 - Display Order List
   - Users can see all of their orders
@@ -49,7 +49,7 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
 
 ---
 
-## [Play with Testing Account](https://asker.mu.yichunhuang.com)
+## Play with Testing Account
 #### Student
 email: student_test@gmail.com <br>
 password: 123456
