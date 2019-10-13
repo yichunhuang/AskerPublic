@@ -98,6 +98,98 @@ password: 123456
 ![](https://i.imgur.com/u3nnPm4.png)
 
 ---
+## API Docs
+
+### Host Name
+
+asker.mu.yichunhuang.com
+### Response Obejcts
+* `User Object`
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| id | ID | User's id |
+| provider | String | Account's provider (native / facebook) |
+| name | String | User's name |
+| email | String | User's email |
+| role | String  | User's role (student / teacher) |
+| accessToken | String | Token for verifying identity |
+| accessExpired | String | Expired time for accessToken |
+| point | Int | Asker's currency |
+| createdAt | String  | Time when account is created |
+| photo | String | User's photo |
+
+* `Subject Object`
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| id | ID | Subject's id |
+| name | String | Subject's name |
+
+* `Post Object`
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| id | ID | Post's id |
+| title | String | Post's title |
+| subject | SubjectType | Post's subject |
+| content | String | Post's content |
+| images | String  | Post's images |
+| student | UserType | Student who asks in this post |
+| teacher | UserType | Teacher who answers for this post |
+| status | String | Post's status (Unanswer / Answering / Answered / Discard) |
+| chatRecords | Array of ChatRecordType | All chatRecords of the post|
+| createdAt | String  | Time when post is created |
+
+* `ChatRecord Object`
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| id | ID | ChatRecord's id |
+| postId | Int | Post's id |
+| senderId | Int | Sender's id |
+| msgType | String | Message's type (text / image) |
+| msg | String  | Message's content |
+| createdAt | String | Token for verifying identity |
+| accessExpired | String | Expired time for accessToken |
+| point | int | Asker's currency |
+| createdAt | String  | Time when message is created |
+
+
+
+* `StudentOrder Object`
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| id | ID | StudentOrder's id |
+| student | UserType | Student who owns the order |
+| total | Int | Total amount paid in the order |
+| status | String | StudentOrder's status (paid / unpaid) |
+| recipientEmail | String  | Order information is sent to this email
+| createdAt | String  | Time when StudentOrder is created |
+
+* `TeacherOrder Object`
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| id | ID | TeacherOrder's id |
+| teacher | UserType | Teacher who owns the order |
+| total | Int | Total amount received in the order |
+| status | String | TeacherOrder's status (received / unreceived) |
+| recipientEmail | String  | Order information is sent to this email
+| createdAt | String  | Time when TeacherOrder is created |
+
+
+### GraphQL Schema
+
+#### RootQueryType
+![](https://i.imgur.com/SQ5SZpE.png)
+
+
+#### Mutation
+![](https://i.imgur.com/1fdIABU.png)
+
+---
 
 ## Contact
 #### Yi-Chun Huang
