@@ -10,6 +10,7 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
 ## Table of Contents
 
    * [AskerPublic](#askerpublic)
+      * [Main Features](#main-features)
       * [Play with Testing Account](#play-with-testing-account)
       * [Backend Technique](#backend-technique)
          * [Programming Language](#programming-language)
@@ -31,8 +32,24 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
       * [Contact](#contact)
 
 ---
+## [Main Features](https://www.youtube.com/watch?v=nh9Pyt4JNE8)
+- Payment with Stripe
+- Display Order List
+  - Users can see all of their orders
+- Post Search
+  - Teacher can filter posts by subjects
+  - Users can search post by keywords when looking for historical posts
+- Live Chat
+  - Support sending texts, uploading files, and drawing on board
+  - Show if teacher or student is online
+- Chat Records 
+  - Users can trace their past conversation
+- Member System
+  - Support native and facebook account
 
-## Play with Testing Account
+---
+
+## [Play with Testing Account](https://asker.mu.yichunhuang.com)
 #### Student
 email: student_test@gmail.com <br>
 password: 123456
