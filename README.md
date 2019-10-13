@@ -24,10 +24,10 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
          * [Library and Framework](#library-and-framework)
       * [Database Schema](#database-schema)
       * [Backend Architecture](#backend-architecture)
-      * [API Docs] (#api-docs)
-        * [Host Name] (#host-name)
-        * [Response Obejcts] (#response-objects)
-        * [GraphQL Schema] (#graphql-schema)
+      * [API Docs](#api-docs)
+        * [Host Name](#host-name)
+        * [Response Obejcts](#response-objects)
+        * [GraphQL Schema](#graphql-schema)
       * [Contact](#contact)
 
 ---
