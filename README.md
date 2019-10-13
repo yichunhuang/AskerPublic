@@ -24,6 +24,10 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
          * [Library and Framework](#library-and-framework)
       * [Database Schema](#database-schema)
       * [Backend Architecture](#backend-architecture)
+      * [API Docs] (#api-docs)
+        * [Host Name] (#host-name)
+        * [Response Obejcts] (#response-objects)
+        * [GraphQL Schema] (#graphql-schema)
       * [Contact](#contact)
 
 ---
@@ -104,6 +108,7 @@ password: 123456
 
 asker.mu.yichunhuang.com
 ### Response Obejcts
+
 * `User Object`
 
 | Field | Type | Description |
@@ -178,10 +183,9 @@ asker.mu.yichunhuang.com
 | status | String | TeacherOrder's status (received / unreceived) |
 | recipientEmail | String  | Order information is sent to this email
 | createdAt | String  | Time when TeacherOrder is created |
-
-
+<br>
+<hr>
 ### GraphQL Schema
-
 #### RootQueryType
 ![](https://i.imgur.com/SQ5SZpE.png)
 
