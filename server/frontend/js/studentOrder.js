@@ -24,7 +24,7 @@ app.allOrders = () => {
         let orderBox = document.getElementById('orderBox');
         for (let i = 0 ;i < orders.length; i++) {
             let statusImg = "/imgs/success.png";
-            if (orders[i].status === "Unpaid")
+            if (orders[i].status === "unpaid")
                 statusImg = "/imgs/fail.png";
             let orderCard = app.createElement("div", {atrs:{
                 className: "orderCard"

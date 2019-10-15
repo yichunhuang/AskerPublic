@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 app.use('/graphql', 
     graphqlHTTP({
         schema: graphqlAPI,
-        graphiql: false
+        graphiql: true
     })
 );
 
