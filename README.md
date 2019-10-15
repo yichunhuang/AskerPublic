@@ -26,7 +26,6 @@ Asker is a web platform for one on one tutorial. Students can upload questions w
       * [Database Schema](#database-schema)
       * [Backend Architecture](#backend-architecture)
       * [API Docs](#api-docs)
-        * [Host Name](#host-name)
         * [Response Objects](#response-objects)
         * [GraphQL Schema](#graphql-schema)
       * [Contact](#contact)
@@ -120,10 +119,6 @@ password: 123456
 
 ---
 ## API Docs
-
-### Host Name
-
-asker.mu.yichunhuang.com
 ### Response Objects
 
 * `User Object`
