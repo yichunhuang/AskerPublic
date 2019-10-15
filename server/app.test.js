@@ -16,7 +16,7 @@ test('get all subjects', async () => {
     expect(await subject.readAll()).toEqual(expect.arrayContaining(expected));
 }); 
 
-test('get corresponding error', async () => {
+test('get corresponding error', () => {
     expect(errorHandling(new TypeError('type error testing')).message).toEqual(expect.stringContaining('Type Error'));
     expect(errorHandling(new SyntaxError('syntax error testing')).message).toEqual(expect.stringContaining('Syntax Error'));
     expect(errorHandling(new RangeError('range error testing')).message).toEqual(expect.stringContaining('Range Error'));
@@ -32,12 +32,11 @@ jest.mock('axios');
 test('get facebook profile', () => {
     const user = { 
         id: '26204',
-        name: 'Jenny Huang',
+        name: 'Jenny',
         email: 'b03704074@ntu.edu.tw' 
     }
     const resp = {data: user};
     axios.get.mockResolvedValue(resp);
     return getFacebookProfile().then(result => expect(result).toEqual(user))
-
 })
 
