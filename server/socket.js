@@ -7,14 +7,11 @@ const ChatRecord = require('./model/chatRecord.js');
 module.exports = (io, siofu) => {
     io.set('origins', '*:*');
     io.on('connection', (socket) => {
-        console.log("io connect");
-        
         let uploader = new siofu();
         uploader.listen(socket);
         uploader.on("saved", function(event){
             fs.readFile(event.file.pathName, (err, data) => {
                 if (err) throw err;
-                console.log(data);
                 const params = {
                     Bucket: 'stylishbucket',
                     Key: 'assets/socket/' + post.id + '/' + event.file.name,
@@ -25,8 +22,6 @@ module.exports = (io, siofu) => {
                 }
                 s3.upload(params, (err, data) => {
                     if (err) { return new Error(err) }
-                    console.log('Image successfully uploaded.');
-
                     let msg = {};
                     msg.msgType = 'img';
                     msg.msg = 'assets/socket/' + post.id + '/' + event.file.name; 
@@ -37,8 +32,7 @@ module.exports = (io, siofu) => {
                     io.to(post.id).emit("msg", msg);
 
                     fs.unlink(event.file.pathName, (err) => {
-                        if (err) throw err;
-                        console.log(event.file.pathName + ' was deleted');
+                        if (err) return err;
                     });
                 });
             });
@@ -118,7 +112,6 @@ module.exports = (io, siofu) => {
 
         // store into db, clear cache
         socket.on('disconnect', () => {
-            console.log("someone disconnect");
             if (!post || !post.id)
                 return;
             cache.hkeys(post.id, function (err, values) {
