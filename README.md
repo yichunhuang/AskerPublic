@@ -1,7 +1,7 @@
 # AskerPublic
 Asker is a web platform for one on one tutorial. Students can upload questions with text and photos, our system will send notifications to teachers. Students can get answers through live chat with top-level teachers here.
 
-#### Website URL: https://asker.mu.yichunhuang.com
+#### Website URL: https://asker.mu.yichunhuang.com (no longer exist)
 #### DEMO URL: https://www.youtube.com/watch?v=nh9Pyt4JNE8
 [![DEMO](http://img.youtube.com/vi/nh9Pyt4JNE8/0.jpg)](http://www.youtube.com/watch?v=nh9Pyt4JNE8 "DEMO")
 
